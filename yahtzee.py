@@ -1,5 +1,6 @@
 import random
 import time
+import statistics
 
 NUM_STANDARD_DICE = 5
 def mostFrequent(List):
@@ -37,13 +38,34 @@ def standardTurn():
 
     return turnThree
 
+def countRollUntilYahtzee(): 
+    turn = standardRoll(NUM_STANDARD_DICE)
+
+    count = 1
+    while (not isYahtzee(turn)):
+        turn = weightedTurn(turn)
+        count +=1 
+
+    return count
+
+# input is a standard roll e.g. [2,2,3,2,2]
+def getAverageRollCount():
+    final = standardTurn()
+
+    countMostFrequent, mostFrequentElement = mostFrequent(final)
+
+    return countMostFrequent
+
 def attemptYahtzee():
     final = standardTurn()
 
-    isYahtzee = final.count(final[0]) == len(final)
+    return isYahtzee(final)
+
+def isYahtzee(roll):
+    isYahtzee = roll.count(roll[0]) == len(roll)
     return isYahtzee
 
-def runSimulation(runs):
+def numberOfYahtzeesSimulation(runs):
     yahtzees = 0
     for i in range(runs):
         isYahtzee = attemptYahtzee()
@@ -54,6 +76,32 @@ def runSimulation(runs):
     print("runs:", runs)
     print("number of yahtzees:", yahtzees)
 
+def averageRollsUntilYahtzeeSimulation(runs):
+    numRollsToYahtzeeList = []
+    totalSum = 0
+    for i in range(runs):
+        count = countRollUntilYahtzee()
+        numRollsToYahtzeeList.append(count)
+        totalSum += count
+    print("Median:", statistics.median(numRollsToYahtzeeList))
+    print("Average:", totalSum/runs)
+    print("Minimum:", min(numRollsToYahtzeeList))
+    print("Maximum:", max(numRollsToYahtzeeList))
+
+def averageRoleTotalSimulation(runs):
+    total_list = []
+    total = 0
+    for i in range(runs):
+        score = getAverageRollCount()
+        total_list.append(score)
+        total += score
+
+    print("Median:", statistics.median(total_list))
+    print("Average:", total/runs)
+
 start_time = time.time()
-runSimulation(1000000)
+print("Starting simulation...")
+# numberOfYahtzeesSimulation(1000000)
+# averageRoleTotalSimulation(1000000)
+averageRollsUntilYahtzeeSimulation(1000000)
 print("program finished in %s seconds" % (time.time() - start_time))
