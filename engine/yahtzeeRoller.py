@@ -12,7 +12,7 @@ def __individualRoll():
     return random.randrange(1,6)
     
 # Roll 5 dice once each
-def standardRoll(numDice = NUM_STANDARD_DICE):
+def standardRoll(numDice: int = NUM_STANDARD_DICE):
     values = []
 
     for i in range(numDice):
@@ -22,7 +22,7 @@ def standardRoll(numDice = NUM_STANDARD_DICE):
 
 # This is weighted since we will save the best
 # dice from the previous roll and reroll the rest
-def weightedRoll(previousRoll):
+def weightedRoll(previousRoll: list):
     countMostFrequentOccurence, mostFrequentDiceElement = __mostFrequent(previousRoll)
     savedDice = [mostFrequentDiceElement] * countMostFrequentOccurence
 

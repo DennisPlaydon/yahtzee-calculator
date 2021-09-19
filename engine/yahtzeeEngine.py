@@ -25,7 +25,7 @@ def countRollUntilYahtzee():
 
     return count
 
-def isYahtzee(roll):
+def isYahtzee(roll: list):
     isYahtzee = roll.count(roll[0]) == len(roll)
     return isYahtzee
 

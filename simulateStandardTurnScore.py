@@ -8,7 +8,7 @@ import sys
 # This will simulate what the median and average scores are. 
 
 # A score of 4 represents four of the same dice.
-def averageStandardScoreSimulation(runs):
+def averageStandardScoreSimulation(runs: int):
     total_list = []
     total = 0
     for i in range(runs):

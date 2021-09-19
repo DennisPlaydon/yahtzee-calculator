@@ -5,7 +5,7 @@ import time
 # I was curious how many yahtzees you get in a simulation of runs. 
 # For example: In a million standard turns - how many are yahtzees.
 
-def numberOfYahtzeesSimulation(runs):
+def numberOfYahtzeesSimulation(runs: int):
     yahtzees = 0
     for i in range(runs):
         final = yahtzeeEngine.standardTurn()

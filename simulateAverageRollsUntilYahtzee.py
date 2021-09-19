@@ -7,7 +7,7 @@ import sys
 # You may get a yahtzee on the first roll but it might be on the 70th.
 # This will output median, average, min and max rolls to get a yahtzee.
 
-def rollsUntilYahtzee(runs):
+def rollsUntilYahtzee(runs: int):
     numRollsToYahtzeeList = []
     totalSum = 0
     for i in range(runs):
