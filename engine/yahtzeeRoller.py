@@ -9,7 +9,7 @@ def __mostFrequent(List):
 
 # Roll a dice once
 def __individualRoll():
-    return random.randrange(1,6)
+    return random.randrange(1,7)
     
 # Roll 5 dice once each
 def standardRoll(numDice: int = NUM_STANDARD_DICE):
